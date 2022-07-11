@@ -19,8 +19,6 @@ function AddCar({onAdded}) {
         console.log(car);
         setCar({
             ...car,
-            // file:e.target.files && e.target.files.length?URL.createObjectURL(e.target.files[0]):car.file,
-            // image:e.target.files && e.target.files.length?e.target.files[0].name:car.image,
             [name]: value,
         })
     }
@@ -28,8 +26,6 @@ function AddCar({onAdded}) {
         setCar({
             ...car,
             file: URL.createObjectURL(e.target.files[0]),image:e.target.files[0].name
-            // file: e.target.files && e.target.files.length ? URL.createObjectURL(e.target.files[0]) : car.file,
-            // image: e.target.files && e.target.files.length ? e.target.files[0].name : car.image
         })
     }
     const tooggle = () => {
@@ -46,7 +42,7 @@ function AddCar({onAdded}) {
         e.preventDefault();
         const fileInput=document.querySelector('#fileinput');
         console.log(fileInput.files[0]);
-        const formData=new FormData();
+        const formData = new FormData();
         formData.append('image',fileInput.files[0]);
         formData.append('description',car.description);
         formData.append('model',car.model);
@@ -67,23 +63,21 @@ function AddCar({onAdded}) {
             </Button>
             <Modal isOpen={modal} toggle={tooggle}>
                 <form onSubmit={handleSubmitForm} encType="multipart/form-data" method='post'>
-
-               
                 <ModalHeader toggle={tooggle}>
                     Add a new car
                 </ModalHeader>
                 <ModalBody>
                     <FormGroup>
                         <Label>Model</Label>
-                        <Input id="model" value={car ?car.model:""} onChange={handlerInput} name="model" type="text" />
+                        <Input id="model" value={car ? car.model:""} onChange={handlerInput} name="model" type="text" />
                     </FormGroup>
                     <FormGroup>
                         <Label>Description</Label>
-                        <Input id="description"  value={car?car.description:""} onChange={handlerInput} name="description" type="text" />
+                        <Input id="description"  value={car ? car.description:""} onChange={handlerInput} name="description" type="text" />
                     </FormGroup>
                     <FormGroup>
                         <Label>Produced_on</Label>
-                        <Input id="produced_on"  value={car?car.produced_on:""} onChange={handlerInput}  name="produced_on" type="date" />
+                        <Input id="produced_on"  value={car ? car.produced_on:""} onChange={handlerInput}  name="produced_on" type="date" />
                     </FormGroup>
                     <FormGroup row>
                         <Label sm={2}>Image</Label>
